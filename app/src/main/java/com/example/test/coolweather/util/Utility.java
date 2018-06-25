@@ -1,6 +1,7 @@
 package com.example.test.coolweather.util;
 
 import android.text.TextUtils;
+import android.util.Log;
 
 import com.example.test.coolweather.db.City;
 import com.example.test.coolweather.db.County;
@@ -26,12 +27,14 @@ public class Utility {
                     province.setProvinceName(provinceObject.getString("name"));
                     province.setProvinceCode(provinceObject.getInt("id"));
                     province.save();
+                    LogUtil.i("TAG","省："+provinceObject.getString("name")+"，id："+provinceObject.getInt("id"));
                 }
                 return true;
             }catch (JSONException e){
                 e.printStackTrace();
             }
         }
+        Log.e("TAG","获取省级数据失败");
         return false;
     }
 
@@ -49,12 +52,14 @@ public class Utility {
                     city.setCityCode(cityObject.getInt("id"));
                     city.setProvinceId(provinceId);
                     city.save();
+                    LogUtil.i("TAG","省id："+provinceId+"，市："+cityObject.getString("name")+"，id"+cityObject.getInt("id"));
                 }
                 return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+        Log.e("TAG","获取市级数据失败");
         return false;
     }
 
@@ -72,12 +77,14 @@ public class Utility {
                     county.setWeatherId(countyObject.getString("weather_id"));
                     county.setCityId(CityId);
                     county.save();
+                    LogUtil.i("TAG","市id："+CityId+"，县："+countyObject.getString("name")+"，id："+countyObject.getString("weather_id"));
                 }
                 return true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
         }
+        Log.e("TAG","获取县级数据失败");
         return false;
     }
 

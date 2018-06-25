@@ -134,7 +134,7 @@ public class WeatherActivity extends AppCompatActivity {
      */
     public void requestWeather(final String weatherId){
         String weatherUrl = "http://guolin.tech/api/weather?cityid="+weatherId
-                +"&key=bc0418b57b2d4918819d3974ac1285d9";
+                +"&key=13c83bc650e8483aac1464558aaf62e4";
         HttpUtil.sendOkHttpRequest(weatherUrl, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -161,7 +161,7 @@ public class WeatherActivity extends AppCompatActivity {
                             editor.apply();
                             showWeatherInfo(weather);
                             Intent intent = new Intent(WeatherActivity.this, AutoUpdateService.class);
-                            startActivity(intent);
+                            startService(intent);
                         }else {
                             Toast.makeText(WeatherActivity.this,"获取天气信息失败",Toast.LENGTH_SHORT).show();
                         }
